@@ -114,6 +114,11 @@ class SquareMatrix:
                 elems += map(float, line.split(','))
         return SquareMatrix(elems)
 
+    def write_csv(self, fname):
+        with open(fname, 'wt') as f:
+            for i in range(self.size):
+                f.write(','.join(map(str, self.get_row(i))) + '\n')
+
 
 if __name__ == '__main__':
     # read data from std
@@ -131,4 +136,6 @@ if __name__ == '__main__':
     print('computing...')
     C = mul.multiply(A, B)
     print('Result matrix is ', C)
+
+    C.write_csv('result.csv')
 
